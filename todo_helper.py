@@ -15,7 +15,7 @@ class Section:
         
 def do_copy(yest, today):
     if not os.path.exists(yest):
-        file(today, 'w').close()
+        open(today, 'w').close()
     else:
         with open(yest, 'r') as f:
             contents = list(f)
