@@ -38,6 +38,8 @@ def parse_file(fileToParse):
             items = []
             matches = re.compile('^##(.*)##$').match(content)
             section = matches.group(1)
+        elif content.isspace():
+            continue
         else:
             items.append(Item(content[1:] if content.startswith('x ') else content, content.startswith('x ')))
     if section != '':
@@ -48,7 +50,7 @@ def do_cleanup(fileToParse):
     sections = parse_file(fileToParse)
     with open(fileToParse, 'w') as f:
         for section in sections:
-            print('##{}##'.format(section._name), file=f)
+            print('##{}##'.format(section._name).rstrip(), file=f)
             for unfinished in [item._text.rstrip() for item in section._items if not item._completed]:
                 print(unfinished, file=f)
             for finished in [item._text.rstrip() for item in section._items if item._completed]:
