@@ -41,7 +41,7 @@ def parse_file(fileToParse):
         elif content.isspace():
             continue
         else:
-            items.append(Item(content[1:] if content.startswith('x ') else content, content.startswith('x ')))
+            items.append(Item(content[2:] if content.startswith('x ') else content, content.startswith('x ')))
     if section != '':
         sections.append(Section(section, items))
     return sections;
