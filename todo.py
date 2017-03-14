@@ -13,6 +13,9 @@ parser = argparse.ArgumentParser(description='todo utility')
 parser.add_argument('config', help='path to config file')
 args = parser.parse_args()
 
+if not os.path.exists(args.config):
+  open(args.config, 'w').close()
+
 if os.path.exists(today):
   todo_helper.do_cleanup(today)
 else:
