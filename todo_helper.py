@@ -44,7 +44,7 @@ def parse_file(fileToParse):
             items.append(Item(content[2:] if content.startswith('x ') else content, content.startswith('x ')))
     if section != '':
         sections.append(Section(section, items))
-    return sections;
+    return sections
 
 def do_cleanup(fileToParse):
     sections = parse_file(fileToParse)

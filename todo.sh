@@ -1,4 +1,4 @@
-today="$HOME/todo/"$(date +%Y%m%d).txt
-python3 "$HOME/bin/todo.py"
-vim "$today"
+python3 "$HOME/bin/todo.py" "$HOME/config/todo.config"
+read -r today<"$HOME/config/todo.config"
+vim $today
 
