@@ -21,7 +21,7 @@ if os.path.exists(today):
 else:
   with open(args.config, 'r+') as f:
     configContents = list(f)
-    if len(configContents) > 0 and os.path.exists(configContents[0]):
-      todo_helper.do_copy(configContents[0], today)
-    f.write(today)
-    f.write('\n')
+    if len(configContents) > 0 and os.path.exists(configContents[0].rstrip()):
+      todo_helper.do_copy(configContents[0].rstrip(), today)
+    f.seek(0)
+    f.write(today+'\n')
